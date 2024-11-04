@@ -68,9 +68,9 @@ public class Board {
    * @param row the row of the attacker
    * @param col the column of the attacker
    */
-  public void clearCell(int row, int col) {
+  public void clear(int row, int col) {
     // Clear old position of the attacker
-    grid.set(row, col, this.def);
+    this.boardMatrix.set(row, col, this.def);
   }
 
   /**
@@ -80,9 +80,19 @@ public class Board {
    * @param col the column of the cell
    * @return the character in the cell
    */
-    // Method to get a cell value
-  public Character getCell(int row, int col) {
-    return grid.get(row, col);
+  public Character get(int row, int col) {
+    return this.boardMatrix.get(row, col);
+  }
+
+  /**
+   * Sets the value at the specified cell.
+   *
+   * @param row the row of the cell
+   * @param col the column of the cell
+   * @param val the character to be set
+   */
+  public void set(int row, int col, Character val) {
+    this.boardMatrix.set(row, col, val);
   }
 
   /**
