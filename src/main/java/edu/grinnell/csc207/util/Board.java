@@ -31,7 +31,7 @@ public class Board {
     this.boardMatrix = new MatrixV0<>(width, height, this.def);
     // Start the player in the bottom center
     this.player = new Player(width / 2, height - 1);
-    this.attackers = new Attacker();
+    this.attackers = new Attacker(this);
   } // Board(int, int)
 
   // +---------+-----------------------------------------------------------
