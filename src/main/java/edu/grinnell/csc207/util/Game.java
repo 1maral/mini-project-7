@@ -8,11 +8,10 @@ import java.util.Scanner;
 
 public class Game {
 	public Board board;
-	private Player player;
 	private int score;
 	private boolean gameOver;
 
-	public Game(itn, width, int height) {
+	public Game(int width, int height) {
 		this.board = new Board(width, height);
 		// Start player at bottom center
 		this.player = new Player(width / 2, height - 1);
@@ -21,8 +20,7 @@ public class Game {
 		this.gameOver = false;
 	} // GameLogic(int, int)
 
-	public void start() {
-		Scanner scanner = new Scanner(System.in);
+	public void start(Scanner scanner) {
 		while (!gameOver) {
 			board.display();
 			System.out.print("Enter your move (L for left/R for right/A for attack): ");

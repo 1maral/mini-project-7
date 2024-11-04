@@ -3,16 +3,16 @@ package edu.grinnell.csc207.util;
 import java.io.PrintWriter;
 
 public class Board {
+  private final char def = ' ';
+  private final char playdef = 'O';
+  private final char playdef = 'O';
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
   
   private final int width;
   private final int height;
-  private final char def;
-  private final char playdef;
   private MatrixV0<Character> grid;
-  private final String[] attackers;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
