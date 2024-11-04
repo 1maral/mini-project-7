@@ -13,9 +13,6 @@ public class Game {
 
 	public Game(int width, int height) {
 		this.board = new Board(width, height);
-		// Start player at bottom center
-		this.player = new Player(width / 2, height - 1);
-		this.board.updatePosition();
 		this.score = 0;
 		this.gameOver = false;
 	} // GameLogic(int, int)

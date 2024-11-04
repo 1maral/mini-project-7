@@ -42,6 +42,21 @@ public class Player {
   // +---------+
 
   /**
+   * Updates the player’s position on the board.
+   *
+   * @param oldCol the old column of the player
+   * @param oldRow the old row of the player
+   * @param newCol the new column of the player
+   * @param newRow the new row of the player
+   */
+  public void placePlayer(int oldCol, int oldRow, int newCol, int newRow) {
+    // Clear old position of the player
+    this.boardMatrix.set(oldRow, oldCol, this.def);
+    // Place player at new position
+    this.boardMatrix.set(newRow, newCol, this.playDef);
+  }
+
+  /**
    * Movements of the player
    */
   public void moveLeft(Board board) {

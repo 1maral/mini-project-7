@@ -3,48 +3,40 @@ package edu.grinnell.csc207.util;
 import java.io.PrintWriter;
 
 public class Board {
-  private final char def = ' ';
-  private final char playdef = 'O';
-  private final char playdef = 'O';
+  public final char def = ' ';
+  public final char playDef = 'O';
+  public final char attackDef = 'A';
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
-  
   private final int width;
   private final int height;
-  private MatrixV0<Character> grid;
+  public MatrixV0<Character> boardMatrix;
+  public Player player;
+  public Attacker attackers;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
   // +--------------+
   
   /**
-   * Creates a Board with specified dimensions and randomly places attackers.
+   * Creates a Board with specified dimensions, player and attackers
    *
    * @param width  the width of the board
    * @param height the height of the board
    */
   public Board(int width, int height) {
-      this.width = width;
-      this.height = height;
-      this.def = ' ';
-      this.playdef = 'O';
-      this.grid = new MatrixV0<>(width, height, this.def);
-      this.attackers = new String[width];
-      placeAttackers(width);
-  }
+    this.width = width;
+    this.height = height;
+    this.boardMatrix = new MatrixV0<>(width, height, this.def);
+    // Start the player in the bottom center
+    this.player = new Player(width / 2, height - 1);
+    this.attackers = new Attacker();
+  } // Board(int, int)
 
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
-
-  /**
-   * Places attackers randomly on the board, and returns true if player lost.
-   */
-  private boolean placeAttackers(int max) {
-    return true;
-    // STUB
-  }
 
   /**
    * Updates the player’s position on the board.
@@ -54,11 +46,11 @@ public class Board {
    * @param newCol the new column of the player
    * @param newRow the new row of the player
    */
-  public void updatePosition(int oldCol, int oldRow, int newCol, int newRow) {
+  public void placePlayer(int oldCol, int oldRow, int newCol, int newRow) {
     // Clear old position of the player
-    grid.set(oldRow, oldCol, this.def);
+    this.boardMatrix.set(oldRow, oldCol, this.def);
     // Place player at new position
-    grid.set(newRow, newCol, this.playdef);
+    this.boardMatrix.set(newRow, newCol, this.playDef);
   }
 
   /**
