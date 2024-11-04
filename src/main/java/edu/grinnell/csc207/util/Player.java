@@ -59,8 +59,8 @@ public class Player {
   } // moveRight(Board)
 
   public int attack(Board board) {
-    for (int row = this.currentRow; row <= 0; row++) {
-      if (board.getCell(row, this.currentCol) == 'A') {
+    for (int row = this.currentRow; row >= 0; row--) {
+      if (board.getCell(row, this.currentCol).equals('A')) {
         board.clearCell(row, this.currentCol);
         return this.attackScore;
       } // if
