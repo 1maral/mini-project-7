@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.util;
+package edu.grinnell.csc207.util.AssociativeArrays;
 
 /**
  * An easy way to store key/value pairs.  We assume that other
@@ -40,8 +40,6 @@ class KVPair<K, V> {
    *
    * @param pairKey
    *   The key of the new pair.
-   * @param pairValue
-   *   The value of the new pair.
    */
   KVPair(K pairKey, V pairValue) {
     this.key = pairKey;
@@ -57,8 +55,8 @@ class KVPair<K, V> {
    *
    * @return the copy.
    */
-  public KVPair<K, V> clone() {
-    return new KVPair<K, V>(this.key, this.val);
+  public KVPair<K,V> clone() {
+    return new KVPair<K,V>(this.key, this.val);
   } // clone()
 
   /**
@@ -67,12 +65,7 @@ class KVPair<K, V> {
    * @return a string of the form "key:value".
    */
   public String toString() {
-    if (null == this.val) {
-      return this.key.toString() + ":" + "<null>";
-    } else {
-      return this.key.toString() + ":" + this.val.toString();
-    } // if
+    return this.key.toString() + ":" + this.val.toString();
   } // toString()
-
 } // class KVPair
 
