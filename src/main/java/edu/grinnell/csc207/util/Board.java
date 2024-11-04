@@ -38,6 +38,15 @@ public class Board {
   // | Methods |
   // +---------+
 
+  public boolean placeAttackers() {
+    if (attackers.isGameOver() == true) {
+      return true;
+    } else {
+      attackers.placeAttackers();
+      return false;
+    }
+  }
+
   /**
    * Updates the player’s position on the board.
    *

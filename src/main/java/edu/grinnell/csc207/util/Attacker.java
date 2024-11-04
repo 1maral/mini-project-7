@@ -7,12 +7,10 @@ package edu.grinnell.csc207.util;
  * @author Maral Bat-Erdene
  */
 
-import edu.grinnell.csc207.util.MatrixV0;
-
 public class Attacker {
   //fields
   private Board currentBoard;
-  private boolean[] attackerLine;
+  private Character[] attackerLine;
   private int lowestRow;
 
   //constructors
@@ -21,8 +19,16 @@ public class Attacker {
   }
 
   //methods
-  public void placeAttacker() {
-    
+  public void placeAttackers() {
+    try {
+      attackerLine = new Character[currentBoard.getWidth()];
+      for (int i = 0; i < currentBoard.getWidth() - 1; i++) {
+        attackerLine[i] = 'A';
+      }
+      currentBoard.boardMatrix.insertRow(0, attackerLine);
+    } catch (ArraySizeException e) {
+      System.err.println("Array size does not match width");
+    }
   }
 
   public boolean isGameOver() {
