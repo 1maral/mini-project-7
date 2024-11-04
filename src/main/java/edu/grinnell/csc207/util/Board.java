@@ -61,7 +61,7 @@ public class Board {
    */
   public void clear(int row, int col) {
     // Clear old position of the attacker
-    grid.set(row, col, this.def);
+    this.boardMatrix.set(row, col, this.def);
   }
 
   /**
@@ -72,7 +72,7 @@ public class Board {
    * @return the character in the cell
    */
   public Character get(int row, int col) {
-    return grid.get(row, col);
+    return this.boardMatrix.get(row, col);
   }
 
   /**
