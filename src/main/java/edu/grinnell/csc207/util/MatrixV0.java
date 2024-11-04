@@ -421,7 +421,7 @@ public class MatrixV0<T> implements Matrix<T> {
    * height, and equal elements; false otherwise.
    */
   public boolean equals(Object other) {
-    return this == other;       // STUB
+    return this == other;
   } // equals(Object)
 
   /**

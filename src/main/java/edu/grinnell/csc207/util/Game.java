@@ -12,7 +12,7 @@ public class Game {
 	private int score;
 	private boolean gameOver;
 
-	public Game(itn, width, int height) {
+	public Game(int width, int height) {
 		this.board = new Board(width, height);
 		// Start player at bottom center
 		this.player = new Player(width / 2, height - 1);
