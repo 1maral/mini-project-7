@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.util;
 
+import edu.grinnell.csc207.util.Game;
+
 /**
  * Actions of the Player.
  *
@@ -23,6 +25,7 @@ public class Player {
   private int currentCol;
   private int currentRow;
   private int attackScore;
+  private Game game;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -32,9 +35,10 @@ public class Player {
    * Build a new player with a starting postions startCol and startRow
    *
    */
-  public Player(int startCol, int startRow) {
+  public Player(int startCol, int startRow, Game startGame) {
     this.currentCol = startCol;
     this.currentRow = startRow;
+    this.game = startGame;
   } // Player(int, int)
 
   // +---------+-----------------------------------------------------------
@@ -49,11 +53,13 @@ public class Player {
    * @param newCol the new column of the player
    * @param newRow the new row of the player
    */
-  public void placePlayer(int oldCol, int oldRow, int newCol, int newRow) {
+  public void placePlayer(int newCol) {
     // Clear old position of the player
-    this.boardMatrix.set(oldRow, oldCol, this.def);
+    this.game.gameBoard.set(this.currentRow, this.currentCol, this.game.gameBoard.def);
     // Place player at new position
-    this.boardMatrix.set(newRow, newCol, this.playDef);
+    this.game.gameBoard.set(this.currentRow, newCol, this.game.gameBoard.playDef);
+    // Update the currentCol to new column
+    this.currentCol = newCol;
   }
 
   /**
@@ -61,15 +67,13 @@ public class Player {
    */
   public void moveLeft(Board board) {
     if (this.currentCol > 0) {
-      board.updatePosition(this.currentCol, this.currentRow, this.currentCol - step, this.currentRow);
-      this.currentCol -= step;
+      this.placePlayer(board, this.currentCol - step);
     } // if
   } // moveLeft(Board)
 
   public void moveRight(Board board) {
     if (this.currentCol < board.getWidth() - 1) {
-      board.updatePosition(this.currentCol, this.currentRow, this.currentCol + step, this.currentRow);
-      this.currentCol = this.currentCol + step;
+      this.placePlayer(board, this.currentCol + step);
     } // if
   } // moveRight(Board)
 
