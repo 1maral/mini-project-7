@@ -1,7 +1,5 @@
 package edu.grinnell.csc207.util;
 
-import edu.grinnell.csc207.util.Game;
-
 /**
  * Actions of the Player.
  *
@@ -39,6 +37,7 @@ public class Player {
     this.currentCol = startCol;
     this.currentRow = startRow;
     this.game = startGame;
+    this.game.gameBoard.set(this.currentRow, this.currentCol, this.game.gameBoard.playDef);
   } // Player(int, int)
 
   // +---------+-----------------------------------------------------------
@@ -55,7 +54,7 @@ public class Player {
    */
   public void placePlayer(int newCol) {
     // Clear old position of the player
-    this.game.gameBoard.set(this.currentRow, this.currentCol, this.game.gameBoard.def);
+    this.game.gameBoard.clear(this.currentRow, this.currentCol);
     // Place player at new position
     this.game.gameBoard.set(this.currentRow, newCol, this.game.gameBoard.playDef);
     // Update the currentCol to new column
@@ -67,20 +66,20 @@ public class Player {
    */
   public void moveLeft(Board board) {
     if (this.currentCol > 0) {
-      this.placePlayer(board, this.currentCol - step);
+      this.placePlayer(this.currentCol - step);
     } // if
   } // moveLeft(Board)
 
   public void moveRight(Board board) {
     if (this.currentCol < board.getWidth() - 1) {
-      this.placePlayer(board, this.currentCol + step);
+      this.placePlayer(this.currentCol + step);
     } // if
   } // moveRight(Board)
 
   public int attack(Board board) {
     for (int row = this.currentRow; row >= 0; row--) {
-      if (board.getCell(row, this.currentCol).equals('A')) {
-        board.clearCell(row, this.currentCol);
+      if (this.game.gameBoard.get(row, this.currentCol).equals(this.game.gameBoard.attackDef)) {
+        this.game.gameBoard.clear(row, this.currentCol);
         return this.attackScore;
       } // if
     } // for
