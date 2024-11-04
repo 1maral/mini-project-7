@@ -119,12 +119,12 @@ public class Board {
    * @param matrix
    *   The matrix to print.
    */
-  static void display(PrintWriter pen, String caption, Matrix matrix) {
+  static void display(PrintWriter pen, String caption, Board board) {
     pen.println("=".repeat(80));
     pen.println();
     pen.println(caption);
     pen.println();
-    Matrix.print(pen, matrix, true);
+    Matrix.print(pen, board.boardMatrix, true);
     pen.println();
   } // figure(PrintWriter, String, Matrix)
 } // class Board
