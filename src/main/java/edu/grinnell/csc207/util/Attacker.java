@@ -12,35 +12,29 @@ import java.util.Random;
 public class Attacker {
   //fields
   private final Board currentBoard;
-  private boolean[] attackerLine;
   private int lowestRow;
-  private Random random;
 
   //constructors
   public Attacker(Board board) {
     this.currentBoard = board;
-    this.random = new Random();
-    this.attackerLine = new boolean[this.currentBoard.getWidth()];
+    this.lowestRow = 0;
   }
 
   //methods
   public void placeAttackers() {
-    int randomInt;
-    int boardLength = currentBoard.getWidth();
+    int boardLength = this.currentBoard.getWidth();
+    Character[] attackerLine = new Character[boardLength];
     try {
       for (int i = 0; i < boardLength; i++) {
-        randomInt = random.nextInt(2);
-        this.attackerLine[i] = randomInt == 1;
+        attackerLine[i] = this.currentBoard.attackDef;
       } // for
 
-      // I think we should not access boardMatrix directly?
+      // maybe access boardMatrix from the currentboard?
       for (int col = 0; col < boardLength; col++) {
-        if (this.attackerLine[col]) {
-          this.currentBoard.set(0, col, this.currentBoard.attackDef);
-        } // if
+        this.currentBoard.set(0, col, attackerLine[col]);
       } // for
 
-      // i think you should shift the values down by 1 row here and update the lowest Row
+      // maybe here we can shift the values down and update the lowrow?
     } catch (Exception e) {
       System.err.println("Array size does not match width");
     }
