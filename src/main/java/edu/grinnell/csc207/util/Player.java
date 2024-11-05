@@ -14,16 +14,20 @@ public class Player {
   /**
    * A possible number of step for a movement
    */
-  private static final int step = 1;
+  private final int step = 1;
+
+  /**
+   * A constant score for killing an attacker
+   */
+  private final int attackScore = 10;
 
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
 
   private int currentCol;
-  private int currentRow;
-  private int attackScore;
-  private Game game;
+  private final int currentRow;
+  private final Board gameBoard;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -33,11 +37,11 @@ public class Player {
    * Build a new player with a starting postions startCol and startRow
    *
    */
-  public Player(int startCol, int startRow, Game startGame) {
+  public Player(int startCol, int startRow, Board startBoard) {
     this.currentCol = startCol;
     this.currentRow = startRow;
-    this.game = startGame;
-    this.game.gameBoard.set(this.currentRow, this.currentCol, this.game.gameBoard.playDef);
+    this.gameBoard = startBoard;
+    this.gameBoard.set(this.currentRow, this.currentCol, this.gameBoard.playDef);
   } // Player(int, int)
 
   // +---------+-----------------------------------------------------------
@@ -54,9 +58,9 @@ public class Player {
    */
   public void placePlayer(int newCol) {
     // Clear old position of the player
-    this.game.gameBoard.clear(this.currentRow, this.currentCol);
+    this.gameBoard.clear(this.currentRow, this.currentCol);
     // Place player at new position
-    this.game.gameBoard.set(this.currentRow, newCol, this.game.gameBoard.playDef);
+    this.gameBoard.set(this.currentRow, newCol, this.gameBoard.playDef);
     // Update the currentCol to new column
     this.currentCol = newCol;
   }
@@ -78,8 +82,8 @@ public class Player {
 
   public int attack(Board board) {
     for (int row = this.currentRow; row >= 0; row--) {
-      if (this.game.gameBoard.get(row, this.currentCol).equals(this.game.gameBoard.attackDef)) {
-        this.game.gameBoard.clear(row, this.currentCol);
+      if (this.gameBoard.get(row, this.currentCol).equals(this.gameBoard.attackDef)) {
+        this.gameBoard.clear(row, this.currentCol);
         return this.attackScore;
       } // if
     } // for
@@ -94,5 +98,4 @@ public class Player {
   public int getRow() {
     return this.currentRow;
   } // getRow()
-
 } // class Player

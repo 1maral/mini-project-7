@@ -11,7 +11,7 @@ public class Board {
   // +--------+
   private final int width;
   private final int height;
-  public MatrixV0<Character> boardMatrix;
+  private static MatrixV0<Character> boardMatrix;
   public Player player;
   public Attacker attackers;
 
@@ -20,7 +20,8 @@ public class Board {
   // +--------------+
   
   /**
-   * Creates a Board with specified dimensions, player and attackers
+   * Creates a Board with specified dimensions, player and attackers.
+   * Start the player in the bottom center
    *
    * @param width  the width of the board
    * @param height the height of the board
@@ -28,49 +29,31 @@ public class Board {
   public Board(int width, int height) {
     this.width = width;
     this.height = height;
-    this.boardMatrix = new MatrixV0<>(width, height, this.def);
-    // Start the player in the bottom center
-    this.player = new Player(width / 2, height - 1);
     this.attackers = new Attacker(this);
+    Board.boardMatrix = new MatrixV0<>(width, height, this.def);
+    this.player = new Player(width / 2, height - 1, this);
   } // Board(int, int)
 
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
-
   public boolean placeAttackers() {
     if (attackers.isGameOver() == true) {
       return true;
     } else {
       attackers.placeAttackers();
       return false;
-    }
-  }
+    } // if/else
+  } // placeAttackers()
 
   /**
-   * Updates the player’s position on the board.
-   *
-   * @param oldCol the old column of the player
-   * @param oldRow the old row of the player
-   * @param newCol the new column of the player
-   * @param newRow the new row of the player
-   */
-  public void placePlayer(int oldCol, int oldRow, int newCol, int newRow) {
-    // Clear old position of the player
-    this.boardMatrix.set(oldRow, oldCol, this.def);
-    // Place player at new position
-    this.boardMatrix.set(newRow, newCol, this.playDef);
-  }
-
-  /**
-   * Clears an attacker at the specified location.
+   * Clears the object at the specified location.
    *
    * @param row the row of the attacker
    * @param col the column of the attacker
    */
   public void clear(int row, int col) {
-    // Clear old position of the attacker
-    this.boardMatrix.set(row, col, this.def);
+    Board.boardMatrix.set(row, col, this.def);
   }
 
   /**
@@ -81,7 +64,7 @@ public class Board {
    * @return the character in the cell
    */
   public Character get(int row, int col) {
-    return this.boardMatrix.get(row, col);
+    return Board.boardMatrix.get(row, col);
   }
 
   /**
@@ -92,22 +75,30 @@ public class Board {
    * @param val the character to be set
    */
   public void set(int row, int col, Character val) {
-    this.boardMatrix.set(row, col, val);
+    Board.boardMatrix.set(row, col, val);
   }
 
   /**
    * Gets the width of the board.
    */
   public int getWidth() {
-      return this.width;
+    return this.width;
   }
 
   /**
    * Gets the height of the board.
    */
   public int getHeight() {
-      return this.height;
+    return this.height;
   }
+
+  public void resetBoard() {
+    for (int row = 0; row < this.width; row++) {
+      for (int col = 0; col < this.height; col++) {
+        boardMatrix.set(row, col, this.def);
+      } // for columns
+    } // for rows
+  } // resetBoard()
   
   /**
    * Create and display the current board with a matrix and a caption.
@@ -119,12 +110,12 @@ public class Board {
    * @param matrix
    *   The matrix to print.
    */
-  static void display(PrintWriter pen, String caption, Board board) {
+  static void display(PrintWriter pen, String caption) {
     pen.println("=".repeat(80));
     pen.println();
     pen.println(caption);
     pen.println();
-    Matrix.print(pen, board.boardMatrix, true);
+    Matrix.print(pen, Board.boardMatrix, true);
     pen.println();
   } // figure(PrintWriter, String, Matrix)
 } // class Board
