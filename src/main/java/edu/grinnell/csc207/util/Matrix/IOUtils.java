@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.util;
+package edu.grinnell.csc207.util.Matrix;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -25,6 +25,7 @@ public class IOUtils {
    *
    * @return true if the array contains an equal value and false otherwise.
    */
+  @SuppressWarnings("unused")
   private static <T> boolean arrayContains(T[] vals, T val) {
     for (T tmp : vals) {
       if (tmp.equals(val)) {
@@ -58,6 +59,6 @@ public class IOUtils {
    */
   public static String readCommand(PrintWriter pen, BufferedReader eyes,
       String prompt, String[] commands) {
-    return "";  // STUB
+    return "";
   } // readCommand(PrintWrtier, BufferedReader, String, String[])
 } // class IOUtils

@@ -1,6 +1,10 @@
 package edu.grinnell.csc207.util;
 
+import edu.grinnell.csc207.util.Matrix.MatrixV0;
+import edu.grinnell.csc207.util.Matrix.Matrix;
+
 import java.io.PrintWriter;
+
 
 public class Board {
   public final char def = ' ';
@@ -95,7 +99,7 @@ public class Board {
   public void resetBoard() {
     for (int row = 0; row < this.width; row++) {
       for (int col = 0; col < this.height; col++) {
-        boardMatrix.set(row, col, this.def);
+        Board.boardMatrix.set(row, col, this.def);
       } // for columns
     } // for rows
   } // resetBoard()
