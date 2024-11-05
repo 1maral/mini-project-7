@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
+import edu.grinnell.csc207.util.Matrix.ArraySizeException;
+import edu.grinnell.csc207.util.Matrix.Matrix;
+import edu.grinnell.csc207.util.Matrix.MatrixV0;
+
 /**
  * A variety of tests for the Matrix class.
  *
@@ -239,6 +243,7 @@ class TestMatrix {
    */
   @Test
   public void testSetException() {
+    @SuppressWarnings("unchecked")
     Matrix<String> matrix = new MatrixV0(7, 3);
     assertThrows(IndexOutOfBoundsException.class,
         () -> {matrix.set(-1, 0, "value");},

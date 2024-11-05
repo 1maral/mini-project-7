@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
 
+import edu.grinnell.csc207.util.Matrix.ArraySizeException;
+import edu.grinnell.csc207.util.Matrix.MatrixV0;
+
 /**
  * A variety of tests for the Matrix class.
  *

@@ -5,6 +5,7 @@ import java.io.StringWriter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.grinnell.csc207.util.Matrix.Matrix;
 /**
  * {@code Assertions} is a collection of utility methods that support asserting
  * the state of a {@link Matrix} in tests.
