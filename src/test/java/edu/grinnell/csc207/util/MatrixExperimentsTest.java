@@ -4,10 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static edu.grinnell.csc207.util.MatrixAssertions.assertFigure;
 
-import edu.grinnell.csc207.util.Matrix.ArraySizeException;
-import edu.grinnell.csc207.util.Matrix.Matrix;
-import edu.grinnell.csc207.util.Matrix.MatrixV0;
-
 /**
  * Automated tests based on {@link edu.grinnell.csc207.experiments.MatrixExperiments}.
  *

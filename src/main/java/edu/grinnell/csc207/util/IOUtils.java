@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.util.Matrix;
+package edu.grinnell.csc207.util;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;

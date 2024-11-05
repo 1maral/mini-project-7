@@ -1,6 +1,6 @@
-package edu.grinnell.csc207.util.Matrix;
+package edu.grinnell.csc207.util;
 
-import edu.grinnell.csc207.util.AssociativeArrays.*;;
+import edu.grinnell.csc207.util.AssociativeArrays.*;
 
 /**
  * An implementation of two-dimensional matrices.

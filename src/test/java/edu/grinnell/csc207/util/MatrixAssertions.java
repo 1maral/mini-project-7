@@ -4,8 +4,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import edu.grinnell.csc207.util.Matrix.Matrix;
 /**
  * {@code Assertions} is a collection of utility methods that support asserting
  * the state of a {@link Matrix} in tests.
@@ -64,7 +62,7 @@ class MatrixAssertions {
         T e = expected[row][col];
         T a = actual.get(row, col);
         assertEquals(e, a,
-            String.format("%s [at (%d,%d)]", message, row, col));
+          String.format("%s [at (%d,%d)]", message, row, col));
       } // for col
     } // for row
   } // assertMatrixEquals()
