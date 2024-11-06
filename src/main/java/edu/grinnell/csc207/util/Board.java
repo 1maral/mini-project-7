@@ -57,6 +57,19 @@ public class Board {
     Board.boardMatrix.set(row, col, this.def);
   }
 
+  public void insertRow(int row, Character[] charArr) {
+    try {
+      Board.boardMatrix.insertRow(row, charArr);
+    } catch (ArraySizeException e) {
+      System.err.println("array size too big or small for matrix width");
+    }
+  }
+
+  public void deleteRow(int row) {
+    Board.boardMatrix.deleteRow(row);
+    return;
+  }
+
   /**
    * Gets the value at the specified cell.
    *
