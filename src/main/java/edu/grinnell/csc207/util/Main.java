@@ -15,13 +15,24 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     PrintWriter pen = new PrintWriter(System.out, true);
     while (width == -1 || height == -1) {
+      System.out.println("  Welcome to Attackers! \n");
+      System.out.println("Create your custom game board and get ready for the challenge!");
+      System.out.println("For an optimal experience, choose a board size where both height and width are positive integers greater than 1.");
+      System.out.println("To increase the fun, try setting the height to be at least twice the width. For example, a width of 5 and a height of 10 works great!");
+      System.out.println("Let's start by entering your preferred board dimensions.");
       try {
         pen.println("Enter board width:");
         width = scanner.nextInt();
+        if (width <= 1) {
+          throw new Exception();
+        } // if
         pen.println("Enter board height:");
         height = scanner.nextInt();
+        if (height < 2 * width) {
+          throw new Exception();
+        } // if
       } catch (Exception e) {
-        pen.println("Invalid input. Please try again with integers.");
+        pen.println("Invalid input. Please try again with positive integers.");
         scanner.nextLine();
         // Reset values to prompt user again
         width = -1;
