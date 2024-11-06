@@ -2,7 +2,6 @@ package edu.grinnell.csc207.util;
 
 import java.io.PrintWriter;
 
-
 public class Board {
   public final char def = ' ';
   public final char playDef = 'O';
@@ -39,10 +38,10 @@ public class Board {
   // | Methods |
   // +---------+
   public boolean placeAttackers() {
-    if (attackers.isGameOver() == true) {
+    if (this.attackers.isGameOver()) {
       return true;
     } else {
-      attackers.placeAttackers();
+      this.attackers.placeAttackers();
       return false;
     } // if/else
   } // placeAttackers()
@@ -67,7 +66,6 @@ public class Board {
 
   public void deleteRow(int row) {
     Board.boardMatrix.deleteRow(row);
-    return;
   }
 
   /**
@@ -124,10 +122,10 @@ public class Board {
    * @param matrix
    *   The matrix to print.
    */
-  static void display(PrintWriter pen, String caption) {
+  static void display(PrintWriter pen, String caption, int score) {
     pen.println("=".repeat(80));
     pen.println();
-    pen.println(caption);
+    pen.println(caption + score);
     pen.println();
     Matrix.print(pen, Board.boardMatrix, true);
     pen.println();

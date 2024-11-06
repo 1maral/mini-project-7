@@ -1,6 +1,5 @@
 package edu.grinnell.csc207.util;
 
-
 /**
  * Actions of the Attackers.
  *
@@ -29,39 +28,33 @@ public class Attacker {
     try {
       for (int i = 0; i < boardLength; i++) {
         if (attackerGenerator.nextInt(2) == 0) {
-          attackerLine[i] = ' ';
+          attackerLine[i] = this.currentBoard.def;
         } else {
-          attackerLine[i] = currentBoard.attackDef;
-        }
-      }
-      lowestRow = lowestRowCalc();
-      this.currentBoard.deleteRow(lowestRow);
+          attackerLine[i] = this.currentBoard.attackDef;
+        } // if/else
+      } // for
+      this.lowestRow = lowestRowCalc();
+      this.currentBoard.deleteRow(this.lowestRow);
       this.currentBoard.insertRow(0, attackerLine);
-      // maybe here we can shift the values down and update the lowrow?
     } catch (Exception e) {
       System.err.println("Array size does not match width");
-    }
-  }
+    } // try/catch
+  } // placeAttackers()
 
   public int lowestRowCalc() {
     int boardHeight = this.currentBoard.getHeight();
     int boardLength = this.currentBoard.getWidth();
     for (int i = boardHeight - 1; i >= 0 ; i--) {
       for (int j = 0; j < boardLength; j++) {
-        if (this.currentBoard.get(i, j) == 'A') {
-          return i + 1;
-        }
-      }
-    }
+        if (this.currentBoard.get(i, j).equals(this.currentBoard.attackDef)) {
+          return (i + 1);
+        } // if
+      } // for row
+    } // for column
     return 0;
-  }
+  } // lowestRowCalc()
 
   public boolean isGameOver() {
-    if (this.lowestRow == this.currentBoard.getHeight() - 1) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
+    return this.lowestRow == (this.currentBoard.getHeight() - 1);
+  } // isGameOver()
 } // class Attacker
