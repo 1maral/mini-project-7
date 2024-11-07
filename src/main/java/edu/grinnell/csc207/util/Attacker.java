@@ -57,7 +57,7 @@ public class Attacker {
   }
 
   public boolean isGameOver() {
-    if (this.lowestRow == this.currentBoard.getHeight() - 1) {
+    if ((this.lowestRow + 1) == (this.currentBoard.getHeight() - 1)) {
       return true;
     }
     else {
