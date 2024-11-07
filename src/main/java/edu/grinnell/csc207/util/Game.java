@@ -38,16 +38,13 @@ public class Game {
 					System.out.println("Invalid input. Please enter L, R or A.");
 					input = null;
 			} // switch
-<<<<<<< HEAD
 			if (this.scoreBuffer >= 50) {
 				this.scoreBuffer = 0;
 				this.gameBoard.increaseLevel();
 			}
-=======
 			if (input != null) {
 				gameOver = this.gameBoard.placeAttackers();
 			} // if
->>>>>>> f36ad825f0d1eacdd7db330deb7600ba88f3ac90
 		} // while
 		return score;
 	} // start
