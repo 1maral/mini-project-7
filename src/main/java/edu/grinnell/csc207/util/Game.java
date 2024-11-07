@@ -16,10 +16,10 @@ public class Game {
 
 	public int start(Scanner scanner, PrintWriter pen) {
 		scanner.nextLine();
+		gameOver = this.gameBoard.placeAttackers();
 		while (!gameOver) {
-			gameOver = this.gameBoard.placeAttackers();
-			Board.display(pen, "Current Game Board");
-			System.out.print("Enter your move (L for left/R for right/A for attack): ");
+			Board.display(pen, "Current Score: ", score);
+			System.out.print("Enter your move (L for left/ R for right/ A for attack): ");
 			String input = scanner.nextLine().toUpperCase();
 			switch (input) {
 				case "L":
@@ -34,6 +34,7 @@ public class Game {
 				default:
 					System.out.println("Invalid input. Please enter L, R or A.");
 			} // switch
+			gameOver = this.gameBoard.placeAttackers();
 		} // while
 		return score;
 	} // start
