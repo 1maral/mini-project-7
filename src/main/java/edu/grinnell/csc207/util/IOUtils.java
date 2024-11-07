@@ -1,7 +1,8 @@
 package edu.grinnell.csc207.util;
 
-import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  * A variety of utilities for getting input.
@@ -57,8 +58,27 @@ public class IOUtils {
    * @throws IOException
    *   If an I/O exception occurs.
    */
-  public static String readCommand(PrintWriter pen, BufferedReader eyes,
-      String prompt, String[] commands) {
-    return "";
-  } // readCommand(PrintWrtier, BufferedReader, String, String[])
+  public static String readCommand(PrintWriter pen, Scanner scanner, int width, int height) {
+    while (width == -1 || height == -1) {
+      try {
+        pen.println("Enter board width:");
+        width = scanner.nextInt();
+        if (width <= 1) {
+          throw new Exception();
+        } // if
+        pen.println("Enter board height:");
+        height = scanner.nextInt();
+        if (height < 2 * width) {
+          throw new Exception();
+        } // if
+      } catch (Exception e) {
+        pen.println("Invalid input. Please try again with positive integers.");
+        scanner.nextLine();
+        // Reset values to prompt user again
+        width = -1;
+        height = -1;
+      } // try/catch
+    } // while
+    return(width + "," + height + ",retry");
+  } // readCommand(PrintWriter, Scanner, int, int)
 } // class IOUtils
