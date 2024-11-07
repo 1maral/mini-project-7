@@ -39,6 +39,11 @@ public class Board {
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
+
+  /**
+   * Places attackers on the board for the player to clear.
+   * @return true if the game ends, false if the game continues.
+   */
   public boolean placeAttackers() {
     if (this.attackers.isGameOver()) {
       return true;
@@ -58,6 +63,11 @@ public class Board {
     Board.boardMatrix.set(row, col, this.def);
   }
 
+  /**
+   * Inserts a row into the matrix field of the board.
+   * @param row row to insert into the matrix.
+   * @param charArr array of characters to insert into the matrix.
+   */
   public void insertRow(int row, Character[] charArr) {
     try {
       Board.boardMatrix.insertRow(row, charArr);
@@ -66,10 +76,17 @@ public class Board {
     }
   }
 
+  /**
+   * Deletes a row from the board by accessing the matrix field.
+   * @param row row to delete from the matrix.
+   */
   public void deleteRow(int row) {
     Board.boardMatrix.deleteRow(row);
   }
 
+  /**
+   * Increases the game level, increasing the amount of attackers that can spawn each time.
+   */
   public void increaseLevel() {
     this.level++;
   }

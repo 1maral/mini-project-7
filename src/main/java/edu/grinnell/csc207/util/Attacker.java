@@ -15,15 +15,20 @@ public class Attacker {
   private int lowestRow;
 
   //constructors
+  /**
+   * Constructs the attacker class setting the lowest row.
+   * @param board passed in so we can edit the board that contains our data.
+   */
   public Attacker(Board board) {
     this.currentBoard = board;
     this.lowestRow = 0;
   }
 
   //methods
+
   /**
-   * 
-   * @param level
+   * Places the next row of attackers based on level passed in by the board.
+   * @param level the level that determines the amount of attackers spawned in.
    */
   public void placeAttackers(int level) {
     int boardLength = this.currentBoard.getWidth();
@@ -53,6 +58,11 @@ public class Attacker {
     } // try/catch
   } // placeAttackers()
 
+
+  /**
+   * Calculates the lowest row containing attackers.
+   * @return the row number of the lowest row containing attackers.
+   */
   public int lowestRowCalc() {
     int boardHeight = this.currentBoard.getHeight();
     int boardLength = this.currentBoard.getWidth();
@@ -66,6 +76,10 @@ public class Attacker {
     return 0;
   } // lowestRowCalc()
 
+  /**
+   * Determines if the game is over based on if the lowest row contains a player and attackers.
+   * @return true if the game is ended, false if the game continues.
+   */
   public boolean isGameOver() {
     return (this.lowestRow + 1) == (this.currentBoard.getHeight() - 1);
   } // isGameOver()

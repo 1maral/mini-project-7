@@ -11,9 +11,9 @@ import java.util.Scanner;
  * @author Maral Bat-Erdene
  */
 public class Game {
-	// +--------+------------------------------------------------------------
-  // | Fields |
-  // +--------+
+    // +--------+------------------------------------------------------------
+    // | Fields |
+    // +--------+
 	/** The game board where the game takes place. */
 	public Board gameBoard;
 
@@ -30,8 +30,8 @@ public class Game {
 	public int level;
 
 	// +--------------+------------------------------------------------------
-  // | Constructors |
-  // +--------------+
+    // | Constructors |
+    // +--------------+
 	/**
 	 * Initializes a new game with the specified board dimensions.
 	 * Sets the current score to 0, and the flag to false.
@@ -46,8 +46,8 @@ public class Game {
 	} // GameLogic(int, int)
 
 	// +---------+-----------------------------------------------------------
-  // | Methods |
-  // +---------+
+    // | Methods |
+    // +---------+
 	/**
 	 * Starts the game loop, which continues until the game is over.
 	 * The game loop repeatedly updates the board with new attackers,
