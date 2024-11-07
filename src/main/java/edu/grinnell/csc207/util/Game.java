@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class Game {
 	public Board gameBoard;
 	private int score;
+	private int scoreBuffer;
 	private boolean gameOver;
+	public int level;
 
 	public Game(int width, int height) {
 		this.gameBoard = new Board(width, height);
@@ -16,8 +18,8 @@ public class Game {
 
 	public int start(Scanner scanner, PrintWriter pen) {
 		scanner.nextLine();
-		gameOver = this.gameBoard.placeAttackers();
-		while (!gameOver) {
+		while (!gameOver) {	
+			gameOver = this.gameBoard.placeAttackers();
 			Board.display(pen, "Current Score: ", score);
 			System.out.print("Enter your move (L for left/ R for right/ A for attack): ");
 			String input = scanner.nextLine().toUpperCase();
@@ -30,11 +32,15 @@ public class Game {
 					break;
 				case "A":
 					this.score += this.gameBoard.player.attack(gameBoard);
+					this.scoreBuffer += 10;
 					break;
 				default:
 					System.out.println("Invalid input. Please enter L, R or A.");
 			} // switch
-			gameOver = this.gameBoard.placeAttackers();
+			if (this.scoreBuffer >= 50) {
+				this.scoreBuffer = 0;
+				this.gameBoard.increaseLevel();
+			}
 		} // while
 		return score;
 	} // start

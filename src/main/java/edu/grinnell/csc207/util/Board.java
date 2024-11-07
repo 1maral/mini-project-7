@@ -14,6 +14,7 @@ public class Board {
   private static MatrixV0<Character> boardMatrix;
   public Player player;
   public Attacker attackers;
+  public int level;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -29,6 +30,7 @@ public class Board {
   public Board(int width, int height) {
     this.width = width;
     this.height = height;
+    this.level = 0;
     this.attackers = new Attacker(this);
     Board.boardMatrix = new MatrixV0<>(width, height, this.def);
     this.player = new Player(width / 2, height - 1, this);
@@ -41,7 +43,7 @@ public class Board {
     if (this.attackers.isGameOver()) {
       return true;
     } else {
-      this.attackers.placeAttackers();
+      this.attackers.placeAttackers(this.level);
       return false;
     } // if/else
   } // placeAttackers()
@@ -66,6 +68,10 @@ public class Board {
 
   public void deleteRow(int row) {
     Board.boardMatrix.deleteRow(row);
+  }
+
+  public void increaseLevel() {
+    this.level++;
   }
 
   /**

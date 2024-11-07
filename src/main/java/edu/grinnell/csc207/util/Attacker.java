@@ -21,19 +21,31 @@ public class Attacker {
   }
 
   //methods
-  public void placeAttackers() {
+  /**
+   * 
+   * @param level
+   */
+  public void placeAttackers(int level) {
     int boardLength = this.currentBoard.getWidth();
+    int totalAttackers = 0;
     Character[] attackerLine = new Character[boardLength];
     Random attackerGenerator = new Random();
     try {
       for (int i = 0; i < boardLength; i++) {
+        if (totalAttackers == level + 1) {
+          for (int j = i; j < boardLength; j++) {
+            attackerLine[j] = this.currentBoard.def;
+          }
+          break;
+        }
         if (attackerGenerator.nextInt(2) == 0) {
           attackerLine[i] = this.currentBoard.def;
         } else {
           attackerLine[i] = this.currentBoard.attackDef;
+          totalAttackers++;
         } // if/else
       } // for
-      this.lowestRow = lowestRowCalc();
+      this.lowestRow = lowestRowCalc() + 1;
       this.currentBoard.deleteRow(this.lowestRow);
       this.currentBoard.insertRow(0, attackerLine);
     } catch (Exception e) {
@@ -47,7 +59,7 @@ public class Attacker {
     for (int i = boardHeight - 1; i >= 0 ; i--) {
       for (int j = 0; j < boardLength; j++) {
         if (this.currentBoard.get(i, j).equals(this.currentBoard.attackDef)) {
-          return (i + 1);
+          return i;
         } // if
       } // for row
     } // for column
