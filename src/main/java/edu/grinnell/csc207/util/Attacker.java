@@ -45,8 +45,8 @@ public class Attacker {
           totalAttackers++;
         } // if/else
       } // for
-      this.lowestRow = lowestRowCalc() + 1;
-      this.currentBoard.deleteRow(this.lowestRow);
+      this.lowestRow = lowestRowCalc();
+      this.currentBoard.deleteRow(this.lowestRow + 1);
       this.currentBoard.insertRow(0, attackerLine);
     } catch (Exception e) {
       System.err.println("Array size does not match width");

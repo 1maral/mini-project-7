@@ -61,25 +61,33 @@ public class Game {
 	public int start(Scanner scanner, PrintWriter pen) {
 		scanner.nextLine();
 		while (!gameOver) {
-			// Place attackers on the board and check if game is over
-			gameOver = this.gameBoard.placeAttackers();
 			Board.display(pen, "Current Score: ", score);
 
 			// Prompt for player move
 			System.out.print("Enter your move (L for left/ R for right/ A for attack): ");
-			String input = scanner.nextLine().toUpperCase();
+			String input = scanner.nextLine().toUpperCase();			
+			// Only update the game state if input was valid
 
 			// Process the player's input
 			switch (input) {
 				case "L":
 					this.gameBoard.player.moveLeft(gameBoard);
+					if (input != null) {
+						gameOver = this.gameBoard.placeAttackers();
+					} // if
 					break;
 				case "R":
 					this.gameBoard.player.moveRight(gameBoard);
+					if (input != null) {
+						gameOver = this.gameBoard.placeAttackers();
+					} // if
 					break;
 				case "A":
 					this.score += this.gameBoard.player.attack(gameBoard);
 					this.scoreBuffer += 10;
+					if (input != null) {
+						gameOver = this.gameBoard.placeAttackers();
+					} // if
 					break;
 				default:
 					System.out.println("Invalid input. Please enter L, R or A.");
@@ -90,11 +98,6 @@ public class Game {
 			if (this.scoreBuffer >= 50) {
 				this.scoreBuffer = 0;
 				this.gameBoard.increaseLevel();
-			} // if
-
-			// Only update the game state if input was valid
-			if (input != null) {
-				gameOver = this.gameBoard.placeAttackers();
 			} // if
 		} // while
 		return score;

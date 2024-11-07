@@ -40,9 +40,11 @@ public class Main {
 
     // Display welcome message and instructions for board dimensions
     pen.println("   Welcome to Attackers! \n");
+    pen.println("The goal of this game is to position yourself underneath the attackers and clear them before they reach the bottom of the screen!");
+    pen.println("Type L to move your character left, R to move your character right, and A to clear the closest attacker positioned above you!");
     pen.println("Create your custom game board and get ready for the challenge!");
     pen.println("Please choose a board size where both height and width are positive integers greater than 1.");
-    pen.println("For optimal experience, you should set the height to be at least twice the width. For example, a width of 3 and a height of 5 works great!");
+    pen.println("For optimal experience, you should set the height to be at least twice the width. For example, a width of 3 and a height of 6 works great!");
     pen.println("Let's start by entering your preferred board dimensions.");
 
     // Game setup and replay loop
