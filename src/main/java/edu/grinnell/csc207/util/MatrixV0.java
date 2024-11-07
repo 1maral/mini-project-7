@@ -1,6 +1,8 @@
 package edu.grinnell.csc207.util;
 
-import edu.grinnell.csc207.util.AssociativeArrays.*;
+import edu.grinnell.csc207.util.AssociativeArrays.AssociativeArray;
+import edu.grinnell.csc207.util.AssociativeArrays.KeyNotFoundException;
+import edu.grinnell.csc207.util.AssociativeArrays.NullKeyException;
 
 /**
  * An implementation of two-dimensional matrices.
@@ -42,7 +44,7 @@ public class MatrixV0<T> implements Matrix<T> {
    *   If either the width or height are negative.
    */
   public MatrixV0(int width, int height, T def) {
-    matrixArray = new AssociativeArray<String, T>();
+    matrixArray = new AssociativeArray<>();
     this.width = width;
     this.height = height;
     this.defaultVal = def;

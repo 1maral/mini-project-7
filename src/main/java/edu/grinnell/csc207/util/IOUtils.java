@@ -1,6 +1,5 @@
 package edu.grinnell.csc207.util;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -8,6 +7,7 @@ import java.util.Scanner;
  * A variety of utilities for getting input.
  *
  * @author Samuel A. Rebelsky
+ * @author Maral Bat-Erdene
  */
 public class IOUtils {
   // +---------------+-----------------------------------------------
@@ -43,20 +43,6 @@ public class IOUtils {
 
   /**
    * Repeatedly prompt for a command until one is returned.
-   *
-   * @param pen
-   *   Where to print the prompt.
-   * @param eyes
-   *   How to read input.
-   * @param prompt
-   *   The prompt to print.
-   * @param commands
-   *   The valid commands.
-   *
-   * @return the command entered.
-   *
-   * @throws IOException
-   *   If an I/O exception occurs.
    */
   public static String readCommand(PrintWriter pen, Scanner scanner, int width, int height) {
     while (width == -1 || height == -1) {

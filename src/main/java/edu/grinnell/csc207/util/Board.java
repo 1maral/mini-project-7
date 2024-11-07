@@ -109,14 +109,6 @@ public class Board {
   public int getHeight() {
     return this.height;
   }
-
-  public void resetBoard() {
-    for (int row = 0; row < this.width; row++) {
-      for (int col = 0; col < this.height; col++) {
-        Board.boardMatrix.set(row, col, this.def);
-      } // for columns
-    } // for rows
-  } // resetBoard()
   
   /**
    * Create and display the current board with a matrix and a caption.
