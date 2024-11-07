@@ -55,6 +55,6 @@ public class Attacker {
   } // lowestRowCalc()
 
   public boolean isGameOver() {
-    return this.lowestRow == (this.currentBoard.getHeight() - 1);
+    return (this.lowestRow + 1) == (this.currentBoard.getHeight() - 1);
   } // isGameOver()
 } // class Attacker
