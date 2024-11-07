@@ -33,8 +33,11 @@ public class Game {
 					break;
 				default:
 					System.out.println("Invalid input. Please enter L, R or A.");
+					input = null;
 			} // switch
-			gameOver = this.gameBoard.placeAttackers();
+			if (input != null) {
+				gameOver = this.gameBoard.placeAttackers();
+			} // if
 		} // while
 		return score;
 	} // start
