@@ -7,26 +7,30 @@ package edu.grinnell.csc207.util;
  * @author Maral Bat-Erdene
  */
 public class Player {
-   // +-----------+---------------------------------------------------
+  // +-----------+---------------------------------------------------
   // | Constants |
   // +-----------+
 
   /**
-   * A possible number of step for a movement
+   * Step size for a movement
    */
   private final int step = 1;
 
   /**
-   * A constant score for killing an attacker
+   * Score awarded for successfully killing the attacker
    */
   private final int attackScore = 10;
 
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
-
+  /** Current column of the player */
   private int currentCol;
+
+  /** Fixed row of the player (player stays in this row) */
   private final int currentRow;
+
+  /** The constant game board on which the player moves */
   private final Board gameBoard;
 
   // +--------------+------------------------------------------------------
@@ -34,8 +38,11 @@ public class Player {
   // +--------------+
 
   /**
-   * Build a new player with a starting postions startCol and startRow
-   *
+   * Initializes the player at a specified starting position on the game board.
+   * 
+   * @param startCol Initial column position of the player.
+   * @param startRow Initial row position of the player (constant).
+   * @param startBoard The game board on which the player operates.
    */
   public Player(int startCol, int startRow, Board startBoard) {
     this.currentCol = startCol;
@@ -49,12 +56,9 @@ public class Player {
   // +---------+
 
   /**
-   * Updates the player’s position on the board.
-   *
-   * @param oldCol the old column of the player
-   * @param oldRow the old row of the player
-   * @param newCol the new column of the player
-   * @param newRow the new row of the player
+   * Places the player at a new column position, updating the board state.
+   * 
+   * @param newCol The new column where the player will be placed.
    */
   public void placePlayer(int newCol) {
     // Clear old position of the player
@@ -63,10 +67,12 @@ public class Player {
     this.gameBoard.set(this.currentRow, newCol, this.gameBoard.playDef);
     // Update the currentCol to new column
     this.currentCol = newCol;
-  }
+  } // placePlayer(int)
 
   /**
-   * Movements of the player
+   * Moves the player one step to the left, if within board bounds.
+   * 
+   * @param board The game board on which the player moves.
    */
   public void moveLeft(Board board) {
     if (this.currentCol > 0) {
@@ -74,12 +80,24 @@ public class Player {
     } // if
   } // moveLeft(Board)
 
+  /**
+   * Moves the player one step to the right, if within board bounds.
+   * 
+   * @param board The game board on which the player moves.
+   */
   public void moveRight(Board board) {
     if (this.currentCol < board.getWidth() - 1) {
       this.placePlayer(this.currentCol + step);
     } // if
   } // moveRight(Board)
 
+  /**
+   * Performs an attack action, attempting to clear the attacker above the player
+   * in the same column. Awards score if an object is successfully hit.
+   * 
+   * @param board The game board on which the attack is performed.
+   * @return The score awarded for the attack, or 0 if no target was hit.
+   */
   public int attack(Board board) {
     for (int row = this.currentRow; row >= 0; row--) {
       if (this.gameBoard.get(row, this.currentCol).equals(this.gameBoard.attackDef)) {
@@ -87,15 +105,7 @@ public class Player {
         return this.attackScore;
       } // if
     } // for
-    // Attacker was not found in the current column, so didn't hit anything
+    // Attacker was not found in the current column
     return 0;
   } // attack(Board)
-
-  public int getCol() {
-    return this.currentCol;
-  } // getCol() 
-
-  public int getRow() {
-    return this.currentRow;
-  } // getRow()
 } // class Player
