@@ -60,6 +60,7 @@ public class Game {
 	 */
 	public int start(Scanner scanner, PrintWriter pen) {
 		scanner.nextLine();
+		gameOver = this.gameBoard.placeAttackers();
 		while (!gameOver) {
 			Board.display(pen, "Current Score: ", score);
 
