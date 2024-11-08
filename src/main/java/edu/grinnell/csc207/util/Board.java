@@ -3,9 +3,12 @@ package edu.grinnell.csc207.util;
 import java.io.PrintWriter;
 
 public class Board {
-  public final char def = ' ';
-  public final char playDef = 'O';
-  public final char attackDef = 'A';
+  // +--------+------------------------------------------------------------
+  // | Constants |
+  // +--------+
+  public static final char def = ' ';
+  public static final char playDef = 'O';
+  public static final char attackDef = 'A';
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
