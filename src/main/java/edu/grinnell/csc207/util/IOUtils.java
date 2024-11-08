@@ -17,12 +17,9 @@ public class IOUtils {
   /**
    * Determine if an array contains a particular value.
    *
-   * @param <T>
-   *   The type of values in the array.
-   * @param vals
-   *   The array to search.
-   * @param val
-   *   The value to look for.
+   * @param <T> The type of values in the array.
+   * @param vals The array to search.
+   * @param val The value to look for.
    *
    * @return true if the array contains an equal value and false otherwise.
    */
@@ -43,6 +40,11 @@ public class IOUtils {
 
   /**
    * Repeatedly prompt for a command until one is returned.
+   * @param pen the printwriter object for output.
+   * @param scanner the scanner object to take in input.
+   * @param width the user input for width of the board/matrix.
+   * @param height the user input for height of the board/matrix.
+   * @return some output that either succeeds based on input for fails.
    */
   public static String readCommand(PrintWriter pen, Scanner scanner, int width, int height) {
     while (width == -1 || height == -1) {
@@ -57,7 +59,7 @@ public class IOUtils {
         if (height < 2 * width) {
           throw new Exception();
         } // if
-      } catch (Exception e) {
+      } /* end try block */ catch (Exception e) {
         pen.println("Invalid input. Please try again with positive integers.");
         scanner.nextLine();
         // Reset values to prompt user again
@@ -65,6 +67,6 @@ public class IOUtils {
         height = -1;
       } // try/catch
     } // while
-    return(width + "," + height + ",retry");
+    return (width + "," + height + ",retry");
   } // readCommand(PrintWriter, Scanner, int, int)
 } // class IOUtils

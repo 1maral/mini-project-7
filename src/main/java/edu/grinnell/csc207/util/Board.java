@@ -4,17 +4,10 @@ import java.io.PrintWriter;
 
 /**
  * The class that controls the board and its interactions with the player/attackers.
+ * @author Maral Bat-Erdene
+ * @author Benjamin Sheeley
  */
 public class Board {
-<<<<<<< HEAD
-=======
-  // +--------+------------------------------------------------------------
-  // | Constants |
-  // +--------+
-  public static final char def = ' ';
-  public static final char playDef = 'O';
-  public static final char attackDef = 'A';
->>>>>>> e3654f1b07367f27eabc2efffff4580dcf788c59
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+

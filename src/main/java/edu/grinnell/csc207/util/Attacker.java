@@ -1,17 +1,22 @@
 package edu.grinnell.csc207.util;
 
+import java.util.Random;
+
 /**
  * Actions of the Attackers.
  *
  * @author Benjamin Sheeley
  * @author Maral Bat-Erdene
  */
-
-import java.util.Random;
-
 public class Attacker {
   //fields
+  /**
+   * The board we add attackers to.
+   */
   private final Board currentBoard;
+  /**
+   * the lowest row containing attackers.
+   */
   private int lowestRow;
 
   //constructors
@@ -22,7 +27,7 @@ public class Attacker {
   public Attacker(Board board) {
     this.currentBoard = board;
     this.lowestRow = 0;
-  }
+  } //Attacker(Board)
 
   //methods
 
@@ -40,12 +45,12 @@ public class Attacker {
         if (totalAttackers == level + 1) {
           for (int j = i; j < boardLength; j++) {
             attackerLine[j] = this.currentBoard.def;
-          }
+          } /* end for block */
           break;
-        }
+        } /* end if block */
         if (attackerGenerator.nextInt(2) == 0) {
           attackerLine[i] = this.currentBoard.def;
-        } else {
+        } /* if block */ else {
           attackerLine[i] = this.currentBoard.attackDef;
           totalAttackers++;
         } // if/else
@@ -53,7 +58,7 @@ public class Attacker {
       this.lowestRow = lowestRowCalc();
       this.currentBoard.deleteRow(this.lowestRow + 1);
       this.currentBoard.insertRow(0, attackerLine);
-    } catch (Exception e) {
+    } /* try block */ catch (Exception e) {
       System.err.println("Array size does not match width");
     } // try/catch
   } // placeAttackers()
@@ -66,7 +71,7 @@ public class Attacker {
   public int lowestRowCalc() {
     int boardHeight = this.currentBoard.getHeight();
     int boardLength = this.currentBoard.getWidth();
-    for (int i = boardHeight - 1; i >= 0 ; i--) {
+    for (int i = boardHeight - 1; i >= 0; i--) {
       for (int j = 0; j < boardLength; j++) {
         if (this.currentBoard.get(i, j).equals(this.currentBoard.attackDef)) {
           return i;

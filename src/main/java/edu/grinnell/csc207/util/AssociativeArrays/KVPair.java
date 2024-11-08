@@ -55,8 +55,8 @@ class KVPair<K, V> {
    *
    * @return the copy.
    */
-  public KVPair<K,V> clone() {
-    return new KVPair<K,V>(this.key, this.val);
+  public KVPair<K, V> clone() {
+    return new KVPair<K, V>(this.key, this.val);
   } // clone()
 
   /**
