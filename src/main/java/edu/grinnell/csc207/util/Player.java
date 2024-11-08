@@ -12,12 +12,12 @@ public class Player {
   // +-----------+
 
   /**
-   * Step size for a movement
+   * Step size for a movement.
    */
   private final int step = 1;
 
   /**
-   * Score awarded for successfully killing the attacker
+   * Score awarded for successfully killing the attacker.
    */
   private final int attackScore = 10;
 
@@ -27,10 +27,10 @@ public class Player {
   /** Current column of the player */
   private int currentCol;
 
-  /** Fixed row of the player (player stays in this row) */
+  /** Fixed row of the player (player stays in this row). */
   private final int currentRow;
 
-  /** The constant game board on which the player moves */
+  /** The constant game board on which the player moves. */
   private final Board gameBoard;
 
   // +--------------+------------------------------------------------------
@@ -39,7 +39,7 @@ public class Player {
 
   /**
    * Initializes the player at a specified starting position on the game board.
-   * 
+   *
    * @param startCol Initial column position of the player.
    * @param startRow Initial row position of the player (constant).
    * @param startBoard The game board on which the player operates.
@@ -57,7 +57,7 @@ public class Player {
 
   /**
    * Places the player at a new column position, updating the board state.
-   * 
+   *
    * @param newCol The new column where the player will be placed.
    */
   public void placePlayer(int newCol) {
@@ -71,7 +71,7 @@ public class Player {
 
   /**
    * Moves the player one step to the left, if within board bounds.
-   * 
+   *
    * @param board The game board on which the player moves.
    */
   public void moveLeft(Board board) {
@@ -82,7 +82,7 @@ public class Player {
 
   /**
    * Moves the player one step to the right, if within board bounds.
-   * 
+   *
    * @param board The game board on which the player moves.
    */
   public void moveRight(Board board) {
@@ -94,7 +94,7 @@ public class Player {
   /**
    * Performs an attack action, attempting to clear the attacker above the player
    * in the same column. Awards score if an object is successfully hit.
-   * 
+   *
    * @param board The game board on which the attack is performed.
    * @return The score awarded for the attack, or 0 if no target was hit.
    */

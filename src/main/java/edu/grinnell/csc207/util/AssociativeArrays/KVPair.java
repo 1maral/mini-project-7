@@ -40,6 +40,8 @@ class KVPair<K, V> {
    *
    * @param pairKey
    *   The key of the new pair.
+   * @param pairValue
+   *   The value of the new pair.
    */
   KVPair(K pairKey, V pairValue) {
     this.key = pairKey;
@@ -65,7 +67,11 @@ class KVPair<K, V> {
    * @return a string of the form "key:value".
    */
   public String toString() {
-    return this.key.toString() + ":" + this.val.toString();
+    if (null == this.val) {
+      return this.key.toString() + ":" + "<null>";
+    } else {
+      return this.key.toString() + ":" + this.val.toString();
+    } // if
   } // toString()
-} // class KVPair
 
+} // class KVPair

@@ -16,7 +16,7 @@ public class Main {
   /**
    * Main method that initializes the game, takes user input for board dimensions,
    * starts the game, and allows for replaying the game after it ends.
-   * 
+   *
    * @param args command-line arguments (not used)
    */
   @SuppressWarnings("ConvertToTryWithResources")
@@ -24,36 +24,39 @@ public class Main {
     // +--------+------------------------------------------------------------
     // | Main |
     // +--------+
-    /** Game board width, set by user input */
+    // Game board width, set by user input
     int width = -1;
-    /** Game board height, set by user input */
+    // Game board height, set by user input
     int height = -1;
-    /** Game board score, calculated by attacks */
+    // Game board score, calculated by attacks
     int score;
-    /** Stores parsed user inputs */
+    // Stores parsed user inputs
     String[] input;
-    /** Controls replay loop. True to replay, false to exit */
+    // Controls replay loop. True to replay, false to exit
     boolean retry = true;
-    
+
     Scanner scanner = new Scanner(System.in);
     PrintWriter pen = new PrintWriter(System.out, true);
 
     // Display welcome message and instructions for board dimensions
     pen.println("   Welcome to Attackers! \n");
-    pen.println("The goal of this game is to position yourself underneath the attackers and clear them before they reach the bottom of the screen!");
-    pen.println("Type L to move your character left, R to move your character right, and A to clear the closest attacker positioned above you!");
-    pen.println("Create your custom game board and get ready for the challenge!");
-    pen.println("Please choose a board size where both height and width are positive integers greater than 1.");
-    pen.println("For optimal experience, you should set the height to be at least twice the width. For example, a width of 3 and a height of 6 works great!");
+    pen.println("The goal of this game is to position yourself"
+        + "underneath the attackers and clear them before they reach the bottom of the screen!");
+    pen.println("Type L to move your character left, R to move right,"
+        + "and A to clear the closest attacker positioned above you!");
+    pen.println("Create your custom board and get ready for the challenge!");
+    pen.println("Please choose a board size where both"
+        + "height and width are positive integers greater than 1.");
+    pen.println("For optimal experience, you should set the height to be twice the width.");
+    pen.println("For example, a width of 3 and a height of 6 works great!");
     pen.println("Let's start by entering your preferred board dimensions.");
 
     // Game setup and replay loop
-    while(retry) {
+    while (retry) {
       // Read input from the user and assign the values to width and height of the board
       input = IOUtils.readCommand(pen, scanner, width, height).split(",");
       width = Integer.parseInt(input[0]);
       height = Integer.parseInt(input[1]);
-      
       // Create and start the game with specified board dimensions
       pen.println("Board width: " + width + ", Board height: " + height);
       Game game = new Game(width, height);
