@@ -9,20 +9,23 @@ import java.io.PrintWriter;
  */
 public class Board {
   // +--------+------------------------------------------------------------
-  // | Fields |
+  // | Constants |
   // +--------+
   /**
    * the default character of our matrix.
    */
-  public final char def = ' ';
+  static final char DEF = ' ';
   /**
    * The character that represents the player.
    */
-  public final char playDef = 'O';
+  static final char PLAYDEF = 'O';
   /**
    * The character that represents the attackers.
    */
-  public final char attackDef = 'A';
+  static final char ATTACKDEF = 'A';
+  // +--------+------------------------------------------------------------
+  // | Fields |
+  // +--------+
   /**
    * the width of the matrix/board.
    */
@@ -46,7 +49,7 @@ public class Board {
   /**
    * current level that the player is on, determines difficulty.
    */
-  public int level;
+  private int level;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -56,15 +59,15 @@ public class Board {
    * Creates a Board with specified dimensions, player and attackers.
    * Start the player in the bottom center
    *
-   * @param width  the width of the board
-   * @param height the height of the board
+   * @param inputWidth  the width of the board
+   * @param inputHeight the height of the board
    */
-  public Board(int width, int height) {
-    this.width = width;
-    this.height = height;
+  public Board(int inputWidth, int inputHeight) {
+    this.width = inputWidth;
+    this.height = inputHeight;
     this.level = 0;
     this.attackers = new Attacker(this);
-    Board.boardMatrix = new MatrixV0<>(width, height, this.def);
+    Board.boardMatrix = new MatrixV0<>(width, height, Board.DEF);
     this.player = new Player(width / 2, height - 1, this);
   } // Board(int, int)
 
@@ -93,7 +96,7 @@ public class Board {
    * @param col the column of the attacker
    */
   public void clear(int row, int col) {
-    Board.boardMatrix.set(row, col, this.def);
+    Board.boardMatrix.set(row, col, Board.DEF);
   } //clear(row, col)
 
   /**
@@ -163,6 +166,14 @@ public class Board {
    */
   public int getHeight() {
     return this.height;
+  } // getHeight()
+
+  /**
+   * Gets the level of the board.
+   * @return level in int form.
+   */
+  public int getLevel() {
+    return this.level;
   } // getHeight()
 
   /**
