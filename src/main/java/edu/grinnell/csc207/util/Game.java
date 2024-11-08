@@ -72,27 +72,22 @@ public class Game {
 			switch (input) {
 				case "L":
 					this.gameBoard.player.moveLeft(gameBoard);
-					if (input != null) {
-						gameOver = this.gameBoard.placeAttackers();
-					} // if
 					break;
 				case "R":
 					this.gameBoard.player.moveRight(gameBoard);
-					if (input != null) {
-						gameOver = this.gameBoard.placeAttackers();
-					} // if
 					break;
 				case "A":
 					this.score += this.gameBoard.player.attack(gameBoard);
 					this.scoreBuffer += 10;
-					if (input != null) {
-						gameOver = this.gameBoard.placeAttackers();
-					} // if
 					break;
 				default:
 					System.out.println("Invalid input. Please enter L, R or A.");
 					input = null;
-			} // switch
+			} // switch\
+
+      if (input != null) {
+        gameOver = this.gameBoard.placeAttackers();
+      } // if
 
 			// Check for level increase
 			if (this.scoreBuffer >= 50) {
