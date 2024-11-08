@@ -44,14 +44,14 @@ public class Attacker {
       for (int i = 0; i < boardLength; i++) {
         if (totalAttackers == level + 1) {
           for (int j = i; j < boardLength; j++) {
-            attackerLine[j] = this.currentBoard.def;
+            attackerLine[j] = Board.DEF;
           } /* end for block */
           break;
         } /* end if block */
         if (attackerGenerator.nextInt(2) == 0) {
-          attackerLine[i] = this.currentBoard.def;
+          attackerLine[i] = Board.DEF;
         } /* if block */ else {
-          attackerLine[i] = this.currentBoard.attackDef;
+          attackerLine[i] = Board.ATTACKDEF;
           totalAttackers++;
         } // if/else
       } // for
@@ -73,7 +73,7 @@ public class Attacker {
     int boardLength = this.currentBoard.getWidth();
     for (int i = boardHeight - 1; i >= 0; i--) {
       for (int j = 0; j < boardLength; j++) {
-        if (this.currentBoard.get(i, j).equals(this.currentBoard.attackDef)) {
+        if (this.currentBoard.get(i, j).equals(Board.DEF)) {
           return i;
         } // if
       } // for row

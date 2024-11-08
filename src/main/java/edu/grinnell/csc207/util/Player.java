@@ -24,7 +24,7 @@ public class Player {
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
-  /** Current column of the player */
+  /** Current column of the player. */
   private int currentCol;
 
   /** Fixed row of the player (player stays in this row). */
@@ -48,7 +48,7 @@ public class Player {
     this.currentCol = startCol;
     this.currentRow = startRow;
     this.gameBoard = startBoard;
-    this.gameBoard.set(this.currentRow, this.currentCol, this.gameBoard.playDef);
+    this.gameBoard.set(this.currentRow, this.currentCol, Board.PLAYDEF);
   } // Player(int, int)
 
   // +---------+-----------------------------------------------------------
@@ -64,7 +64,7 @@ public class Player {
     // Clear old position of the player
     this.gameBoard.clear(this.currentRow, this.currentCol);
     // Place player at new position
-    this.gameBoard.set(this.currentRow, newCol, this.gameBoard.playDef);
+    this.gameBoard.set(this.currentRow, newCol, Board.PLAYDEF);
     // Update the currentCol to new column
     this.currentCol = newCol;
   } // placePlayer(int)
@@ -100,7 +100,7 @@ public class Player {
    */
   public int attack(Board board) {
     for (int row = this.currentRow; row >= 0; row--) {
-      if (this.gameBoard.get(row, this.currentCol).equals(this.gameBoard.attackDef)) {
+      if (this.gameBoard.get(row, this.currentCol).equals(Board.ATTACKDEF)) {
         this.gameBoard.clear(row, this.currentCol);
         return this.attackScore;
       } // if

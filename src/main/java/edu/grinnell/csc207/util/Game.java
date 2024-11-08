@@ -25,10 +25,6 @@ public class Game {
 
   /** A flag indicating whether the game is over and the game state. */
   private boolean gameOver;
-
-  /** The current level of the game. */
-  public int level;
-
   // +--------------+------------------------------------------------------
   // | Constructors |
   // +--------------+
