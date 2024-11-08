@@ -29,7 +29,7 @@ public class MatrixV0<T> implements Matrix<T> {
   int width;
 
   /**
-   * default value to fill the matrix with
+   * default value to fill the matrix with.
    */
   T defaultVal;
 
@@ -45,8 +45,8 @@ public class MatrixV0<T> implements Matrix<T> {
    * Create a new matrix of the specified width and height with the
    * given value as the default.
    *
-   * @param width The width of the matrix.
-   * @param height The height of the matrix.
+   * @param inputWidth The width of the matrix.
+   * @param inputHeight The height of the matrix.
    * @param def The default value, used to fill all the cells.
    *
    * @throws NegativeArraySizeException If either the width or height are negative.
@@ -60,11 +60,11 @@ public class MatrixV0<T> implements Matrix<T> {
       for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
           matrixArray.set("(" + i + "," + j + ")", def);
-        }
-      }
+        } /* end for loop */
+      } /* end for loop */
     } catch (NullKeyException e) {
       throw new IndexOutOfBoundsException("Key null");
-    }
+    } /* catch NullKeyException */
   } // MatrixV0(int, int, T)
 
   /**
