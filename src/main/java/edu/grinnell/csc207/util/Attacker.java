@@ -42,8 +42,11 @@ public class Attacker {
     Random attackerGenerator = new Random();
     try {
       for (int i = 0; i < boardLength; i++) {
+        //loop through a single row to place attackers
         if (totalAttackers == level + 1) {
+          // do our attackers outweigh the player's level?
           for (int j = i; j < boardLength; j++) {
+            // loop to stop spawning attackers
             attackerLine[j] = Board.DEF;
           } /* end for block */
           break;
