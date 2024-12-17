@@ -3,7 +3,7 @@ package edu.grinnell.csc207.util;
 import java.util.Random;
 
 /**
- * Actions of the Attackers.
+ * Actions of the Attackers. initializes, places, and moves attackers.
  *
  * @author Benjamin Sheeley
  * @author Maral Bat-Erdene
